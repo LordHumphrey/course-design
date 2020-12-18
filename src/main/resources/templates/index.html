@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/css/layui.css">
+    <style>
+        .header {
+            background-color: rgb(57, 61, 73);
+            width: 100%;
+        }
+
+
+        .logo-img {
+            width: 250px;
+            margin-left: 80px;
+        }
+
+        .header {
+            display: flex;
+            top: 65px;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-row header">
+    <div class="layui-col-md6">
+        <div class="logo"><img src="../static/images/custom/logofont.png" alt="" class="logo-img"></div>
+    </div>
+    <div class="layui-col-md6">
+        <div class="layui-header header">
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">首页</a></li>
+                <li class="layui-nav-item"><a href="">新闻</a></li>
+                <li class="layui-nav-item"><a href="">公告</a></li>
+                <li class="layui-nav-item"><a href="">专业介绍</a></li>
+                <li class="layui-nav-item"><a href="">就业指南</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:">实验室介绍</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">923创新实验室</a></dd>
+                        <dd><a href="">925移动开发实验室</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="layui-carousel" id="test1">
+    <div carousel-item>
+        <div><img
+                src="https://www.nefu.edu.cn/__local/5/92/6A/F1762190DC5C8DDA53C35102729_733BFC78_5EA58.jpg?e=.jpg"
+                alt=""></div>
+        <div><img
+                src="https://www.nefu.edu.cn/__local/0/B4/0B/EB6C4FC8910AD08233C3EE6E786_E05ED1E7_40695.jpg?e=.jpg"
+                alt=""></div>
+        <div><img
+                src="https://www.nefu.edu.cn/__local/9/B3/C4/3130E398BAD9A20A969E6F80AD3_8F630E87_2A939.jpg?e=.jpg"
+                alt=""></div>
+        <div><img
+                src="https://www.nefu.edu.cn/__local/5/E3/EC/0323FFE79C8C7AD46EE25072006_2677FAA5_4E17D.jpg?e=.jpg"
+                alt=""></div>
+        <div><img
+                src="https://www.nefu.edu.cn/__local/7/04/D2/3FBFCF744F781D0FFA6A7E36FF3_A7D310BC_26E43.jpg?e=.jpg"
+                alt=""></div>
+    </div>
+</div>
+</body>
+<script src="../static/layui.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+    layui.use('carousel', function(){
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'always' //始终显示箭头
+            ,anim: 'fade' //切换动画方式
+        });
+    });
+</script>
+</html>
