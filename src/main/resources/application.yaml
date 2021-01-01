@@ -17,6 +17,8 @@ server:
     # 是否分配的直接内存(NIO直接分配的堆外内存)
     direct-buffers: true
 spring:
+  #  aop:
+  #    proxy-target-class: true
   application:
     name: spring-boot-demo
   jackson:
@@ -25,7 +27,7 @@ spring:
   datasource:
     username: root
     password: nefunsi
-    url: jdbc:mysql://10.10.11.141:3306/contract_management?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/course_design?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -71,7 +73,7 @@ spring:
           merge-sql: true # 是否合并sql
           db-type: mysql # 数据库类型
         wall: # 防御SQL注入
-          enabled: true
+          enabled: false
           db-type: mysql
           config:
             delete-allow: false
@@ -98,3 +100,22 @@ spring:
         principalCookieName: cookie_user_key # 使druid只当当前的user是谁,cookie_user_key是你保存在cookie中的cookieName
   mvc:
     static-path-pattern: /static/**
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted  # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)

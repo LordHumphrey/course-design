@@ -1,0 +1,649 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ module name： course-design
+  ~ fileName： employment.html
+  ~ 2021-1-1 - create by Tao.
+  ~
+  -->
+
+<!DOCTYPE html>
+
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>软件工程专业</title>
+
+    <meta name="keywords" content="人工智能,大数据"/>
+    <meta name="description" content="软件工程专业"/>
+    <link rel="shortcut icon" type="image/x-icon" href="">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/slide_style.css"/>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../static/js/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".focusbox").flexslider({
+                directionNav: false,
+                pauseOnAction: false
+            });
+        });
+    </script>
+    <style>
+        .wrapper {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 355px;
+            overflow: hidden;
+        }
+
+        .wrapper.igoods {
+            height: 350px;
+        }
+
+        .wrapper.auto {
+            height: auto;
+        }
+
+        .wrapper:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .main-left {
+            position: relative;
+            float: left;
+            margin: 0px 0px 0 0;
+            width: 463px;
+            height: 340px;
+            overflow: hidden;
+        }
+
+        .main-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 478px;
+            overflow: hidden;
+        }
+
+        /*幻灯片样式*/
+        .focusbox {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: 2px solid #f7f7f7;
+            overflow: hidden;
+            _position: relative;
+        }
+
+        .focusbox .slides {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            zoom: 1;
+            overflow: hidden;
+        }
+
+        .focusbox .slides:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .focusbox .slides li {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .focusbox .slides li img {
+            min-width: 100%;
+            min-height: 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .focusbox .slides li .note-bg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 125px;
+            background: url(../images/pic-bg.png) 0 bottom repeat-x;
+            _height: 50px;
+            _background: url(none) 0 0 repeat #000;
+        }
+
+        .focusbox .slides li .note-txt {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            padding: 10px;
+            height: 24px;
+            line-height: 24px;
+            color: #fff;
+            font-size: 16px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .focusbox .flex-control-nav {
+            position: absolute;
+            right: 5px;
+            bottom: 18px;
+            display: block;
+            z-index: 4;
+        }
+
+        .focusbox .flex-control-nav li {
+            margin: 0 5px 0 0;
+            display: inline-block;
+            zoom: 1;
+            *display: inline;
+        }
+
+        .focusbox .flex-control-nav li a {
+            display: block;
+            width: 8px;
+            height: 8px;
+            text-indent: -9999px;
+            border: 1px solid #999;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .focusbox .flex-control-paging li a:hover {
+            background: #333;
+        }
+
+        .focusbox .flex-control-paging li a.flex-active {
+            background: #f90;
+            border-color: #f90;
+            cursor: default;
+        }
+
+        /*文字列表*/
+        .txt-list {
+            position: relative;
+        }
+
+        .txt-list li {
+            display: block;
+            font-size: 14px;
+            height: 30px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .txt-list li.tit {
+            margin-bottom: 10px;
+        }
+
+        .txt-list li.tit a {
+            color: #3b8dd1;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 24px;
+        }
+
+        .txt-list li b {
+            display: inline-block;
+            padding-right: 8px;
+            color: #999;
+            font-weight: normal;
+        }
+
+        .txt-list li span {
+            float: right;
+            margin-left: 5px;
+            color: #999;
+        }
+
+        .txt-list li a {
+            color: #666;
+        }
+
+        .txt-list li a:hover {
+            color: #0089cd;
+        }
+
+        #navhead li {
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            -webkit-transition: .3s, color .5s;
+            -moz-transition: .3s, color .5s;
+            transition: .3s, color .5s;
+            color: white;
+            margin-left: 26px;
+        }
+
+        #navhead li > i {
+            color: #ccc;
+            margin-left: 5px;
+            font-size: 11px;
+        }
+
+        #navhead li:hover > i {
+            -ms-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        #navhead li a:hover,
+        #nav li.active a {
+            color: #8fc35d
+        }
+
+        #navhead span.line-follow {
+            width: 100px;
+            height: 2px;
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: alpha(opacity=0)
+        }
+
+        #navhead span.line-stretch {
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: #1faeff;
+            top: 0;
+            left: 50%
+        }
+
+        /*
+#header.min{height:65px}
+#header.min .logo,#header.min #nav li{height:65px;line-height:65px}
+#header.min .before-login,#header.min .after-login,#header.min .sb-search{margin-top:15px}
+#header.min #nav li dl{top:66px}
+Nav Dropdown */
+        #navhead li {
+            position: relative;
+            transition: all ease .3s
+        }
+
+        #navhead li dl {
+            position: absolute;
+            width: 180px;
+            background: #fff;
+            text-align: left;
+            top: 45px;
+            margin-left: -38px;
+            padding-bottom: 10px;
+            opacity: 0;
+            transition: all .3s ease 0s;
+            transform: translate3d(0px, -20px, 0px);
+            -moz-transform: translate3d(0px, -20px, 0px);
+            -webkit-transform: translate3d(0px, -20px, 0px);
+            visibility: hidden;
+            z-index: 8;
+            border-radius: 0 0 3px 3px;
+        }
+
+        #navhead li dl {
+            -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+            -moz-box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+        }
+
+        #navhead li:hover dl {
+            opacity: 1;
+            transform: translate3d(0px, 0px, 0px);
+            -moz-transform: translate3d(0px, 0px, 0px);
+            -webkit-transform: translate3d(0px, 0px, 0px);
+            visibility: visible
+        }
+
+        #navhead li dl dd {
+            padding: 0 20px;
+            font-size: 14px;
+            line-height: 48px;
+            border-bottom: 1px solid #f5f5f5;
+            text-indent: 0;
+            transition: all .3s ease;
+            background: #fff
+        }
+
+        #navhead li dl dd i {
+            display: block;
+            font-size: 15px;
+            line-height: 48px;
+            float: right;
+            color: transparent;
+            transition: all .3s ease;
+            margin-right: 10px
+        }
+
+        #navhead li dl dd:hover {
+            text-indent: 8px;
+            background: #f6f6f6
+        }
+
+        #navhead li dl dd:hover i {
+            color: #ccc;
+            margin-right: 0
+        }
+
+        #navhead li dl dd a {
+            display: block;
+            clear: both;
+            margin-left: 0px !important;
+            color: #000000
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="index-wrapper index">
+    <!--页面头部-->
+
+
+    <div class="header-wrap">
+        <div class="top-wrap">
+            <div class="inner clearfix">
+                <div class="fl teacher-directory"><a href="#"
+                                                     target="_blank"></a>
+                </div>
+                <div class="fr right-nav">
+
+                    <a href=""></a>
+                    <a href="" id="">教师登录</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrap">
+            <div class="inner clearfix">
+                <div class="logo fl"></div>
+                <div class="nav-list fr">
+                    <ul id="navhead" data-mode="nav-follow">
+                        <li class="index"><a href="">首页</a></li>
+
+                        <li class="news">实验室
+
+                            <dl>
+
+                                <dd><a href="">923创新实验室</a></dd>
+
+                                <dd><a href="">925移动实验室</a></dd>
+
+                            </dl>
+
+                        </li>
+
+                        <li class="news">师资队伍
+
+                            <dl>
+
+                                <dd><a href="/teachers">教师队伍</a></dd>
+
+                                <dd><a href="/teacher-search">教师查询</a></dd>
+
+                            </dl>
+                        </li>
+                        <li class="news">就业指南
+
+                        </li>
+                        <li class="news">人才培养
+
+                            <dl>
+
+                                <dd><a href="">本科生</a></dd>
+
+                                <dd><a href="">硕士研究生</a></dd>
+
+                            </dl>
+                        </li>
+                        <li class="news">学生事务
+
+                            <dl>
+
+                                <dd><a href="">新闻</a></dd>
+
+                                <dd><a href="">公告</a></dd>
+
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.icon-search').click(function () {
+            $(this).hide(400);
+            $(this).siblings('.show-search').show(400);
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/tools/submit_ajax.ashx?action=user_check_login",
+            dataType: "json",
+            timeout: 20000,
+            success: function (data, textStatus) {
+                if (data.status == 1) {
+
+                    $('#jiaoshi').attr('href', '/usercenter.aspx?action=index');
+
+
+                    $("#jiaoshi").text('教师中心');
+
+
+                } else {
+
+                    $('#jiaoshi').attr('href', '/login.aspx');
+
+
+                    $("#jiaoshi").text('教师登录');
+
+
+                }
+            }
+        });
+    </script>
+    <!--/页面头部-->
+    <div class="banner_ny"></div>
+    <div class="content_ny">
+        <div class="left_lm">
+            <img src="../static/img/left10.jpg" width="240" height="254">
+            <ul>
+
+
+
+
+
+                <li>
+
+                    <a href="/xuesheng_list.aspx?category_id=69" style="font-weight: bolder;">就业信息</a>
+
+
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="right_list">
+            <div class="right_list_top">
+                <div class="le">
+                    <div class="title-wrap clearfix">
+                        <div class="title fl"><h3>就业信息</h3></div>
+                    </div>
+                </div>
+                <div class="ri" style="margin-bottom:20px;">
+
+
+                    <a href="/index.aspx">首页</a> &gt;
+                    <a href="/xuesheng.aspx">学生事务</a>
+                    &nbsp;&gt;&nbsp;<a href="/xuesheng_list.aspx?category_id=69&page=1">就业信息</a>
+                </div>
+            </div>
+
+            <ul>
+
+
+
+                <li>
+                    <div class="right_list_img">
+                        <a href="#">
+                            <img src="http://www.ymtc.com/cn/Uploads/2018-02-27/5a95319ae0fda.png" alt=""/>
+                            <span class="news-date clearfix">
+                                <i>07</i>
+                                <b>2018 <br> 九月</b>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="right_list_text">
+                        <p class="p1">
+                            <a href="#" title=""><a href="">长江存储科技有限责任公司宣讲会</a>
+                        </p>
+                        <p class="p2">
+                            长江存储科技有限责任公司宣讲会宣讲对象： 全职宣讲会场地： 信息学部 就业中心第三报告厅宣讲会日期： 2018-09-11宣讲会时间段： 下午详细起止时间：
+                            14:00-16:00招聘网址： 进入公司招聘网址宣讲会招聘简章及其他说明：长江存储科技有限责任公司武汉新芯集成电路制造…
+                        </p>
+                    </div>
+                </li>
+
+
+
+            </ul>
+
+            <!--页码列表-->
+            <div class="page-box">
+                <div class="digg"><span>共69记录</span><span class="disabled">«上一页</span><span class="current">1</span><a
+                        href="">2</a><a
+                        href="">3</a><a
+                        href="">4</a><a
+                        href="">下一页»</a></div>
+            </div>
+            <!--/页码列表-->
+        </div>
+
+
+        <div style="clear:both"></div>
+    </div>
+    <!--页面底部-->
+
+
+    <div class="footer-wrap">
+        <div class="inner clearfix">
+            <div class="b-logo b-item"><img src="../static/img/logo.png" alt=""/></div>
+            <div class="b-contact b-item">
+                <img src="../static/img/link.png"/>
+                <p class="address">地址：黑龙江哈尔滨市香坊区和兴路26号 </p>
+                <p class="post">邮编：150040</p>
+                <p class="tel">电话：82190136 <br></p>
+            </div>
+            <div class="b-access">
+                <img src="../static/img/access.png"/>
+                <ul class="link-wrap clearfix">
+
+
+                    <li><a target="_blank" href="https://www.nefu.edu.cn/" title="东北林业大学">东北林业大学</a></li>
+
+
+                    <li><a target="_blank" href="https://icec.nefu.edu.cn/" title="信息与计算机工程学院">信息与计算机工程学院</a></li>
+
+
+                    <li><a target="_blank" href="http://i.nefu.edu.cn" title="数字东林">数字东林</a></li>
+
+
+                    <li><a target="_blank" href="https://tel.nefu.edu.cn/" title="电话">电话</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-wrap">
+        <div class="inner">
+            <p>版权所有 ©Tao | copyright © 2008-2020 Tao. All Rights
+                Reserved.</p>
+        </div>
+    </div>
+    <!--/页面底部-->
+</div>
+</body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".banner").slide({
+            titCell: ".hd ul",
+            mainCell: ".bd ul",
+            effect: "fold",
+            autoPlay: false,
+            autoPage: true,
+            trigger: "click",
+            startFun: function (i) {
+                var curLi = $(".banner .bd li").eq(i);
+                if (!!curLi.attr("_src")) {
+                    curLi.css("background-image", curLi.attr("_src")).removeAttr("_src");
+                    curLi.css("");
+                }
+            }
+        });
+
+    });
+</script>
+
+<script>
+
+
+    var winWidth = 0;
+    var winHeight = 0;
+
+    function findDimensions() { //函数：获取尺寸
+        //获取窗口宽度
+        if (window.innerWidth) {
+            winWidth = window.innerWidth;
+        } else if ((document.body) && (document.body.clientWidth)) {
+            winWidth = document.body.clientWidth;
+        }
+
+        var realHeight = 440 * winWidth / 1920;
+
+        document.getElementById("bannerhead").style.height = realHeight + "px";
+        document.getElementById("bdhead").style.height = realHeight + "px";
+        document.getElementById("ulhead").style.height = realHeight + "px";
+        var luckElements = document.getElementsByName("imgli");
+
+        for (var i = 0; i < luckElements.length; i++) {
+
+            luckElements[i].style.height = realHeight + "px";
+        }
+    }
+
+    findDimensions();
+
+    window.onresize = findDimensions;
+</script>
+
+</html>

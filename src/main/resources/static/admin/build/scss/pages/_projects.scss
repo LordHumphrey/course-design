@@ -1,0 +1,34 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _projects.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// Pages: Projects
+//
+
+.projects {
+  td {
+    vertical-align: middle;
+  }
+
+  .list-inline {
+    margin-bottom: 0;
+  }
+
+  // table avatar
+  img.table-avatar,
+  .table-avatar img {
+    border-radius: 50%;
+    display: inline;
+    width: 2.5rem;
+  }
+
+  // project state
+  .project-state {
+    text-align: center;
+  }
+}

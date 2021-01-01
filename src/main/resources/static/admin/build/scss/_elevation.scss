@@ -1,0 +1,22 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _elevation.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// Component: Elevation
+//
+
+.elevation-0 {
+  box-shadow: none !important;
+}
+
+// Background colors (colors)
+@each $name, $value in $elevations {
+  .elevation-#{$name} {
+    box-shadow: $value !important;
+  }
+}

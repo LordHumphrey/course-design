@@ -1,0 +1,21 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _invoice.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// Pages: Invoice
+//
+
+.invoice {
+  background: $white;
+  border: 1px solid $card-border-color;
+  position: relative;
+}
+
+.invoice-title {
+  margin-top: 0;
+}

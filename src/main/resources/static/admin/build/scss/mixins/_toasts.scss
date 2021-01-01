@@ -1,0 +1,31 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _toasts.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// Mixins: Toasts
+//
+
+// Toast Variant
+@mixin toast-variant($name, $color) {
+  &.bg-#{$name} {
+    background: rgba($color, .9) !important;
+    @if (color-yiq($color) == $yiq-text-light) {
+
+      .close {
+        color: color-yiq($color);
+        text-shadow: 0 1px 0 #000;
+      }
+    }
+
+    .toast-header {
+      background: rgba($color, .85);
+      color: color-yiq($color);
+    }
+  }
+}
+

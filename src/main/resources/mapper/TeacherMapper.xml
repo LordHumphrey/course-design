@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2021.
+  ~ module name： course-design
+  ~ fileName： TeacherMapper.xml
+  ~ 2021-1-1 - create by Tao.
+  ~
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tao.courseDesign.mapper.TeacherMapper">
+    <resultMap id="BaseResultMap" type="tao.courseDesign.DO.Teacher">
+        <!--@mbg.generated-->
+        <!--@Table teacher-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="note" jdbcType="VARCHAR" property="note"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="professional_title" jdbcType="VARCHAR" property="professionalTitle"/>
+        <result column="isDeleted" jdbcType="BOOLEAN" property="isdeleted"/>
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated"/>
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `name`, note, gender, professional_title,isDeleted, gmt_created, gmt_modified
+    </sql>
+</mapper>

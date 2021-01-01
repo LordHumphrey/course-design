@@ -1,0 +1,25 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _direct-chat.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// Mixins: Direct Chat
+//
+
+// Direct Chat Variant
+@mixin direct-chat-variant($bg-color, $color: #fff) {
+  .right > .direct-chat-text {
+    background: $bg-color;
+    border-color: $bg-color;
+    color: color-yiq($bg-color);
+
+    &::after,
+    &::before {
+      border-left-color: $bg-color;
+    }
+  }
+}

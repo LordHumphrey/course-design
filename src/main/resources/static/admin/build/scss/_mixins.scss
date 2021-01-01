@@ -1,0 +1,21 @@
+/*!
+ * Copyright (c) 2021.
+ * module name： course-design
+ * fileName： _mixins.scss
+ * 2021-1-1 - create by Tao.
+ *
+ */
+
+//
+// General: Mixins
+//
+
+@import 'mixins/cards';
+@import 'mixins/sidebar';
+@import 'mixins/navbar';
+@import 'mixins/accent';
+@import 'mixins/custom-forms';
+@import 'mixins/backgrounds';
+@import 'mixins/direct-chat';
+@import 'mixins/toasts';
+@import 'mixins/miscellaneous';

@@ -1,0 +1,403 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ module name： course-design
+  ~ fileName： news-detail.html
+  ~ 2021-1-1 - create by Tao.
+  ~
+  -->
+
+<!DOCTYPE html>
+
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>软件工程专业</title>
+    <meta name="keywords" content="人工智能,大数据"/>
+    <meta name="description" content="软件工程专业"/>
+    <link rel="shortcut icon" type="image/x-icon" href="">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/slide_style.css"/>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../static/js/jquery.flexslider-min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/am-pagination.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+
+    <style>
+
+
+        #navhead li {
+            display: inline-block;
+            text-align: center;
+            font-size: 16px;
+            -webkit-transition: .3s, color .5s;
+            -moz-transition: .3s, color .5s;
+            transition: .3s, color .5s;
+            color: white;
+            margin-left: 26px;
+        }
+
+        #navhead li > i {
+            color: #ccc;
+            margin-left: 5px;
+            font-size: 11px;
+        }
+
+        #navhead li:hover > i {
+            -ms-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        #navhead li a:hover, #nav li.active a {
+            color: #8fc35d
+        }
+
+        #navhead span.line-follow {
+            width: 100px;
+            height: 2px;
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            filter: alpha(opacity=0)
+        }
+
+        #navhead span.line-stretch {
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: #1faeff;
+            top: 0;
+            left: 50%
+        }
+
+        /*
+        #header.min{height:65px}
+        #header.min .logo,#header.min #nav li{height:65px;line-height:65px}
+        #header.min .before-login,#header.min .after-login,#header.min .sb-search{margin-top:15px}
+        #header.min #nav li dl{top:66px}
+        Nav Dropdown */
+        #navhead li {
+            position: relative;
+            transition: all ease .3s
+        }
+
+        #navhead li dl {
+            position: absolute;
+            width: 180px;
+            background: #fff;
+            text-align: left;
+            top: 45px;
+            margin-left: -38px;
+            padding-bottom: 10px;
+            opacity: 0;
+            transition: all .3s ease 0s;
+            transform: translate3d(0px, -20px, 0px);
+            -moz-transform: translate3d(0px, -20px, 0px);
+            -webkit-transform: translate3d(0px, -20px, 0px);
+            visibility: hidden;
+            z-index: 8;
+            border-radius: 0 0 3px 3px;
+        }
+
+        #navhead li dl {
+            -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+            -moz-box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+        }
+
+        #navhead li:hover dl {
+            opacity: 1;
+            transform: translate3d(0px, 0px, 0px);
+            -moz-transform: translate3d(0px, 0px, 0px);
+            -webkit-transform: translate3d(0px, 0px, 0px);
+            visibility: visible
+        }
+
+        #navhead li dl dd {
+            padding: 0 20px;
+            font-size: 14px;
+            line-height: 48px;
+            border-bottom: 1px solid #f5f5f5;
+            text-indent: 0;
+            transition: all .3s ease;
+            background: #fff
+        }
+
+        #navhead li dl dd i {
+            display: block;
+            font-size: 15px;
+            line-height: 48px;
+            float: right;
+            color: transparent;
+            transition: all .3s ease;
+            margin-right: 10px
+        }
+
+        #navhead li dl dd:hover {
+            text-indent: 8px;
+            background: #f6f6f6
+        }
+
+        #navhead li dl dd:hover i {
+            color: #ccc;
+            margin-right: 0
+        }
+
+        #navhead li dl dd a {
+            display: block;
+            clear: both;
+            margin-left: 0px !important;
+            color: #000000
+        }
+    </style>
+
+
+</head>
+
+<body>
+<div class="index-wrapper" id="vue">
+    <!--页面头部-->
+
+    <div class="header-wrap">
+        <div class="top-wrap">
+            <div class="inner clearfix">
+                <div class="fl teacher-directory"><a href="" target="_blank">教师名录</a>
+                </div>
+                <div class="fr right-nav">
+                    <a href="/login.aspx" id="jiaoshi">教师登录</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrap">
+            <div class="inner clearfix">
+                <div class="logo fl"></div>
+                <div class="nav-list fr">
+                    <ul id="navhead" data-mode="nav-follow">
+                        <li class="index"><a href="index">首页</a></li>
+
+                        <li class="news">实验室
+
+                            <dl>
+                                <dd><a href="">923创新实验室</a></dd>
+                                <dd><a href="">925移动实验室</a></dd>
+                            </dl>
+
+                        </li>
+
+                        <li class="news">师资队伍
+
+                            <dl>
+
+                                <dd><a href="/teachers">教师队伍</a></dd>
+
+                                <dd><a href="/teacher-search">教师查询</a></dd>
+
+                            </dl>
+                        </li>
+                        <li class="news" style=" cursor: pointer;">就业指南</li>
+                        <li class="news">学生事务
+                            <dl>
+
+                                <dd><a href="">新闻</a></dd>
+
+                                <dd><a href="">公告</a></dd>
+
+                            </dl>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/页面头部-->
+
+
+    <div class="banner_ny"></div>
+    <div class="content_ny">
+        <div class="left_lm">
+            <img src="../static/img/left1.jpg" width="240" height="254">
+            <ul>
+
+                <li><a href="/news_list.aspx?category_id=52">学院新闻</a></li>
+
+            </ul>
+        </div>
+
+        <div class="right_list">
+            <div class="right_list_top">
+                <div class="le">
+                    <div class="title-wrap clearfix">
+                        <div class="title fl"><h3>学院新闻</h3></div>
+                    </div>
+                </div>
+                <div class="ri" style="margin-bottom:20px;">
+                    <a href="/index.aspx">首页</a> &gt;
+                    通知动态
+                    &nbsp;&gt;&nbsp;<a href="/news_list.aspx?category_id=52&page=1">学院新闻</a>
+                </div>
+            </div>
+            <div class="right_list_sp">
+                <div class="sp1" th:text="${newsVO.title}"></div>
+                <div class="sp2">
+                    <div class="info">
+                        <span th:text="${newsVO.gmtModified}"><i class="iconfont icon-date"></i></span>
+                    </div>
+                </div>
+                <div>
+                    <p style="text-align:left;text-indent:37px">
+                        <span style="font-size:19px;" th:text="${newsVO.content}"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="clear:both"></div>
+    </div>
+
+</div>
+
+<div class="zzsc-container">
+    <div class="container">
+        <section>
+            <div id="ampagination-bootstrap" style=""></div>
+        </section>
+    </div>
+</div>
+
+
+<div style="clear:both"></div>
+</div>
+
+<!--页面底部-->
+
+
+<div class="footer-wrap">
+    <div class="inner clearfix">
+        <div class="b-logo b-item"><img src="../static/img/logo.png" alt=""/></div>
+        <div class="b-contact b-item">
+            <img src="../static/img/link.png"/>
+            <p class="address">地址：黑龙江哈尔滨市香坊区和兴路26号 </p>
+            <p class="post">邮编：150040</p>
+            <p class="tel">电话：82190136 <br></p>
+        </div>
+        <div class="b-access">
+            <img src="../static/img/access.png"/>
+            <ul class="link-wrap clearfix">
+
+
+                <li><a target="_blank" href="https://www.nefu.edu.cn/" title="东北林业大学">东北林业大学</a></li>
+
+
+                <li><a target="_blank" href="https://icec.nefu.edu.cn/" title="信息与计算机工程学院">信息与计算机工程学院</a></li>
+
+
+                <li><a target="_blank" href="http://i.nefu.edu.cn" title="数字东林">数字东林</a></li>
+
+
+                <li><a target="_blank" href="https://tel.nefu.edu.cn/" title="电话">电话</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bottom-wrap">
+    <div class="inner">
+        <p>版权所有 ©Tao | copyright © 2008-2020 Tao. All Rights
+            Reserved.</p>
+    </div>
+</div>
+<!--/页面底部-->
+<script>
+    var vue = new Vue({
+        el: "#vue",
+        data() {
+            return {
+                teachers: [],
+                professor: true,
+                associate_professor: false,
+                lecturer: false,
+                map: {"professor": "教授", "associate_professor": "副教授", "lecturer": "讲师"}
+            }
+        },
+        mounted() {
+            axios
+                .get('/admin/api/list-teachers', {
+                    params: {
+                        professionalTitle: "教授",
+                    }
+                })
+                .then(response => {
+                    this.teachers = response.data.data;
+                })
+                .catch(error => {
+                    if (error.response) {
+                        toastr.error(error.response.data.message);
+                    } else {
+                        toastr.error("未知错误");
+                    }
+                })
+                .finally(() => this.loading = false)
+        },
+
+        methods: {
+            change: function (event) {
+                if (this.professor) {
+                    this.professor = false;
+                } else if (this.associate_professor) {
+                    this.associate_professor = false;
+                } else if (this.lecturer) {
+                    this.lecturer = false;
+                }
+
+                let job_name = event.currentTarget.getAttribute('value');
+                if ("professor" === job_name) {
+                    this.professor = true;
+                } else if ("associate_professor" === job_name) {
+                    this.associate_professor = true;
+                } else if ("lecturer" === job_name) {
+                    this.lecturer = true;
+                }
+
+                let professionalTitle = this.map[event.currentTarget.getAttribute('value')];
+                axios
+                    .get('/admin/api/list-teachers', {
+                        params: {
+                            professionalTitle: professionalTitle,
+                        }
+                    })
+                    .then(response => {
+                        this.teachers = response.data.data;
+                        console.log(this.teachers);
+                        console.log(response.data.data);
+
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            toastr.error(error.response.data.message);
+                        } else {
+                            toastr.error("未知错误");
+                        }
+                    })
+                    .finally(() => this.loading = false)
+            }
+        }
+
+    });
+
+</script>
+</body>
+
+</html>
