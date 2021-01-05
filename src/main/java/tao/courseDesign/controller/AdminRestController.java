@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： AdminRestController.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -21,7 +21,6 @@ import tao.courseDesign.common.mapStruct.NewsDoConvertToDTO;
 import tao.courseDesign.common.mapStruct.TeacherDoConvertToDTO;
 import tao.courseDesign.common.responseEncapsulation.ResponseEncapsulationAnnotation;
 import tao.courseDesign.common.responseEncapsulation.ResponseStatusCode;
-import tao.courseDesign.common.utils.DelTagsUtil;
 import tao.courseDesign.service.impl.NewsServiceImpl;
 import tao.courseDesign.service.impl.TeacherServiceImpl;
 
@@ -59,12 +58,10 @@ public class AdminRestController {
         } else if (newDTO.getContent().isEmpty()) {
             throw new ResponseException("内容不能为空", ResponseStatusCode.BAD_REQUEST);
 
-        } else {
-            News news = newsDoConvertToDTO.news(newDTO);
-            news.setContent(DelTagsUtil.getTextFromHtml(news.getContent()));
-            newsServiceImpl.saveOrUpdate(news, new QueryWrapper<News>().eq("title", news.getTitle()));
         }
-        return "index";
+        News news = newsDoConvertToDTO.news(newDTO);
+        news.setPic(newDTO.getPic());
+        return newsServiceImpl.saveOrUpdate(news, new QueryWrapper<News>().eq("title", news.getTitle())) ? "添加成功" : "添加失败";
     }
 
     @GetMapping("list-news")
@@ -74,19 +71,17 @@ public class AdminRestController {
 
     @DeleteMapping("delete-news")
     public String deleteNews(@RequestParam Integer id) {
-
         return newsServiceImpl.removeById(id) ? "删除成功" : "删除失败";
     }
 
     @GetMapping("list-teachers")
     public List<Teacher> listTeacher(@RequestParam(defaultValue = "") String professionalTitle) {
-        return teacherServiceImpl.list(new QueryWrapper<Teacher>().eq("professional_title", professionalTitle));
+        return teacherServiceImpl.list(new QueryWrapper<Teacher>().eq(!(professionalTitle.isEmpty()), "professional_title", professionalTitle));
     }
 
     @PostMapping("add-teacher")
     public String addTeacher(@RequestBody TeacherDTO teacherDTO) {
         Teacher teacher = teacherDoConvertToDTO.teacher(teacherDTO);
         return teacherServiceImpl.save(teacher) ? "添加成功" : "添加失败";
-
     }
 }

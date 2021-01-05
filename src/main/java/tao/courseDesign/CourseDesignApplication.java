@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： CourseDesignApplication.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -15,6 +15,7 @@ import org.springframework.cache.annotation.EnableCaching;
 /**
  * @author Tao
  */
+
 @SpringBootApplication
 @EnableCaching(proxyTargetClass = true)
 public class CourseDesignApplication {

@@ -2,13 +2,13 @@
   ~ Copyright (c) 2021.
   ~ module name： course-design
   ~ fileName： laboratory.html
-  ~ 2021-1-1 - create by Tao.
+  ~ 2021-1-5 - create by Tao.
   ~
   -->
 
 <!DOCTYPE html>
 
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
@@ -367,76 +367,8 @@ Nav Dropdown */
     <!--页面头部-->
 
 
-    <div class="header-wrap">
-        <div class="top-wrap">
-            <div class="inner clearfix">
-                <div class="fl teacher-directory"><a href="#"
-                                                     target="_blank"></a>
-                </div>
-                <div class="fr right-nav">
-                    <a href=""></a>
-                    <a href="" id="">教师登录</a>
+    <div th:replace="header_wrap::header-wrap"></div>
 
-                </div>
-            </div>
-        </div>
-        <div class="nav-wrap">
-            <div class="inner clearfix">
-                <div class="logo fl"></div>
-                <div class="nav-list fr">
-                    <ul id="navhead" data-mode="nav-follow">
-                        <li class="index"><a href="">首页</a></li>
-
-                        <li class="news">实验室
-
-                            <dl>
-
-                                <dd><a href="">923创新实验室</a></dd>
-
-                                <dd><a href="">925移动实验室</a></dd>
-
-                            </dl>
-
-                        </li>
-
-                        <li class="news">师资队伍
-
-                            <dl>
-
-                                <dd><a href="/teachers">教师队伍</a></dd>
-
-                                <dd><a href="/teacher-search">教师查询</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news">就业指南
-
-                        </li>
-                        <li class="news">人才培养
-
-                            <dl>
-
-                                <dd><a href="">本科生</a></dd>
-
-                                <dd><a href="">硕士研究生</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news">学生事务
-
-                            <dl>
-
-                                <dd><a href="">新闻</a></dd>
-
-                                <dd><a href="">公告</a></dd>
-
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         $('.icon-search').click(function () {

@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： IndexRestController.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -29,16 +29,16 @@ import java.util.List;
  */
 @RestController
 @ResponseEncapsulationAnnotation
-@RequestMapping("api")
+@RequestMapping("home/api")
 public class IndexRestController {
     @Autowired
     private TeacherServiceImpl teacherServiceImpl;
 
 
     @GetMapping("search-teacher")
-    public List<Teacher> search(@RequestParam(defaultValue = "") String name, @RequestParam(defaultValue = "") String professionalTitle, @RequestParam(defaultValue = "") String gender,@RequestParam(defaultValue = "") String btnSubmit) {
+    public List<Teacher> search(@RequestParam(defaultValue = "") String name, @RequestParam(defaultValue = "") String professionalTitle, @RequestParam(defaultValue = "", value = "sex") String gender) {
         QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
-        teacherQueryWrapper.eq(!("".equals(professionalTitle)), "professional_title", professionalTitle).like(!("".equals(name)), "name", name).eq(!("".equals(gender)), "gender", gender);
+        teacherQueryWrapper.eq(!("all".equals(professionalTitle)), "professional_title", professionalTitle).like(!("".equals(name)), "name", name).eq(!("".equals(gender)), "gender", gender);
         return teacherServiceImpl.list(teacherQueryWrapper);
     }
 }

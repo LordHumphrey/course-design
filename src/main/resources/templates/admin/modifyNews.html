@@ -1,7 +1,7 @@
 <!--
   ~ Copyright (c) 2021.
   ~ module name： course-design
-  ~ fileName： addnews.html
+  ~ fileName： modifyNews.html
   ~ 2021-1-5 - create by Tao.
   ~
   -->
@@ -98,7 +98,8 @@
                                 <label>新闻标题</label>
                                 <br>
                                 <label>
-                                    <input type="text" id="title" class="form-control" placeholder="标题...">
+                                    <input type="text" id="title" class="form-control" placeholder="标题..."
+                                           th:value="${news.title}">
                                 </label>
                             </div>
                         </div>
@@ -107,7 +108,9 @@
                         <div class="card-body pad">
                             <div class="mb-3">
                                 <div id="toolbar-container" class="toolbar"></div>
-                                <div id="text-container" class="text"></div>
+                                <div id="text-container" class="text" th:utext="${news.content}">
+
+                                </div>
                             </div>
                             <div style="width: 80px;">
                                 <div></div>

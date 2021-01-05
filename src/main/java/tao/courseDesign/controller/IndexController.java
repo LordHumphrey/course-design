@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： IndexController.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import tao.courseDesign.DO.News;
 import tao.courseDesign.DO.Teacher;
+import tao.courseDesign.VO.ListNewsVO;
 import tao.courseDesign.VO.NewsVO;
 import tao.courseDesign.common.mapStruct.NewsDoConvertToVO;
+import tao.courseDesign.common.utils.DelTagsUtil;
 import tao.courseDesign.service.impl.NewsServiceImpl;
 import tao.courseDesign.service.impl.TeacherServiceImpl;
 
@@ -35,7 +37,7 @@ import java.util.List;
  */
 @Slf4j
 @Controller
-@RequestMapping(value = {""})
+@RequestMapping(value = {"home"})
 public class IndexController {
     @Autowired
     private TeacherServiceImpl teacherServiceImpl;
@@ -65,7 +67,7 @@ public class IndexController {
     @GetMapping("teacher-search")
     public String searchTeachers(@RequestParam(defaultValue = "", name = "name") String name, @RequestParam(defaultValue = "", name = "jobtitle") String professionalTitle, @RequestParam(defaultValue = "", name = "sex") String gender, @RequestParam(defaultValue = "") String btnSubmit, Model model) {
         QueryWrapper<Teacher> teacherQueryWrapper = new QueryWrapper<>();
-        teacherQueryWrapper.eq(!("".equals(professionalTitle)), "professional_title", professionalTitle).like(!("".equals(name)), "name", name).eq(!("".equals(gender)), "gender", gender);
+        teacherQueryWrapper.eq(!("all".equals(professionalTitle)), "professional_title", professionalTitle).like(!("".equals(name)), "name", name).eq(!("".equals(gender)), "gender", gender);
         List<Teacher> teacherList = teacherServiceImpl.list(teacherQueryWrapper);
         model.addAttribute(teacherList);
         return "teacher-search";
@@ -90,12 +92,31 @@ public class IndexController {
     }
 
     @GetMapping("923")
-    public String laboratory923(){
+    public String laboratory923() {
         return "923-detail";
     }
 
     @GetMapping("925")
-    public String laboratory925(){
+    public String laboratory925() {
         return "925-detail";
+    }
+
+    @GetMapping("employment")
+    public String employment() {
+        return "employment";
+    }
+
+    @GetMapping("listNews")
+    public String listNews(Model model) {
+        List<News> newsList = newsServiceImpl.list();
+        List<ListNewsVO> newsVOList = new ArrayList<>(10);
+        /*
+        问就是不想用bean拷贝工具;
+         */
+        for (News news : newsList) {
+            newsVOList.add(ListNewsVO.builder().pic(news.getPic()).title(news.getTitle()).id(news.getId()).content(DelTagsUtil.getTextFromHtml(news.getContent())).build());
+        }
+        model.addAttribute("newsVOList", newsVOList);
+        return "list_news";
     }
 }

@@ -2,37 +2,28 @@
   ~ Copyright (c) 2021.
   ~ module name： course-design
   ~ fileName： employment.html
-  ~ 2021-1-1 - create by Tao.
+  ~ 2021-1-5 - create by Tao.
   ~
   -->
 
 <!DOCTYPE html>
 
-<html lang="zh">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
     <title>软件工程专业</title>
-
     <meta name="keywords" content="人工智能,大数据"/>
     <meta name="description" content="软件工程专业"/>
     <link rel="shortcut icon" type="image/x-icon" href="">
-
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../static/css/slide_style.css"/>
     <script type="text/javascript" src="../static/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="../static/js/jquery.SuperSlide.2.1.1.js"></script>
     <script type="text/javascript" src="../static/js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="../static/js/jquery.flexslider-min.js"></script>
-
-    <script type="text/javascript">
-        $(function () {
-            $(".focusbox").flexslider({
-                directionNav: false,
-                pauseOnAction: false
-            });
-        });
-    </script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/am-pagination.js"></script>
     <style>
         .wrapper {
             position: relative;
@@ -360,136 +351,26 @@ Nav Dropdown */
         }
     </style>
 
+
 </head>
 
 <body>
-<div class="index-wrapper index">
+<div class="index-wrapper" id="vue">
     <!--页面头部-->
 
+    <div th:replace="header_wrap::header-wrap"></div>
 
-    <div class="header-wrap">
-        <div class="top-wrap">
-            <div class="inner clearfix">
-                <div class="fl teacher-directory"><a href="#"
-                                                     target="_blank"></a>
-                </div>
-                <div class="fr right-nav">
-
-                    <a href=""></a>
-                    <a href="" id="">教师登录</a>
-
-                </div>
-            </div>
-        </div>
-        <div class="nav-wrap">
-            <div class="inner clearfix">
-                <div class="logo fl"></div>
-                <div class="nav-list fr">
-                    <ul id="navhead" data-mode="nav-follow">
-                        <li class="index"><a href="">首页</a></li>
-
-                        <li class="news">实验室
-
-                            <dl>
-
-                                <dd><a href="">923创新实验室</a></dd>
-
-                                <dd><a href="">925移动实验室</a></dd>
-
-                            </dl>
-
-                        </li>
-
-                        <li class="news">师资队伍
-
-                            <dl>
-
-                                <dd><a href="/teachers">教师队伍</a></dd>
-
-                                <dd><a href="/teacher-search">教师查询</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news">就业指南
-
-                        </li>
-                        <li class="news">人才培养
-
-                            <dl>
-
-                                <dd><a href="">本科生</a></dd>
-
-                                <dd><a href="">硕士研究生</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news">学生事务
-
-                            <dl>
-
-                                <dd><a href="">新闻</a></dd>
-
-                                <dd><a href="">公告</a></dd>
-
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        $('.icon-search').click(function () {
-            $(this).hide(400);
-            $(this).siblings('.show-search').show(400);
-        });
-
-        $.ajax({
-            type: "POST",
-            url: "/tools/submit_ajax.ashx?action=user_check_login",
-            dataType: "json",
-            timeout: 20000,
-            success: function (data, textStatus) {
-                if (data.status == 1) {
-
-                    $('#jiaoshi').attr('href', '/usercenter.aspx?action=index');
-
-
-                    $("#jiaoshi").text('教师中心');
-
-
-                } else {
-
-                    $('#jiaoshi').attr('href', '/login.aspx');
-
-
-                    $("#jiaoshi").text('教师登录');
-
-
-                }
-            }
-        });
-    </script>
     <!--/页面头部-->
+
+
     <div class="banner_ny"></div>
     <div class="content_ny">
         <div class="left_lm">
             <img src="../static/img/left10.jpg" width="240" height="254">
             <ul>
-
-
-
-
-
                 <li>
-
-                    <a href="/xuesheng_list.aspx?category_id=69" style="font-weight: bolder;">就业信息</a>
-
-
+                    <a href="" style="font-weight: bolder;">就业信息</a>
                 </li>
-
-
             </ul>
         </div>
         <div class="right_list">
@@ -500,18 +381,12 @@ Nav Dropdown */
                     </div>
                 </div>
                 <div class="ri" style="margin-bottom:20px;">
-
-
-                    <a href="/index.aspx">首页</a> &gt;
-                    <a href="/xuesheng.aspx">学生事务</a>
-                    &nbsp;&gt;&nbsp;<a href="/xuesheng_list.aspx?category_id=69&page=1">就业信息</a>
+                    <a href="/index">首页</a> &gt;
+                    <a href="">学生事务</a>
+                    &nbsp;&gt;&nbsp;<a href="">就业信息</a>
                 </div>
             </div>
-
             <ul>
-
-
-
                 <li>
                     <div class="right_list_img">
                         <a href="#">
@@ -534,15 +409,11 @@ Nav Dropdown */
                 </li>
 
 
-
             </ul>
 
             <!--页码列表-->
             <div class="page-box">
-                <div class="digg"><span>共69记录</span><span class="disabled">«上一页</span><span class="current">1</span><a
-                        href="">2</a><a
-                        href="">3</a><a
-                        href="">4</a><a
+                <div class="digg"><span>共1记录</span><span class="disabled">«上一页</span><span class="current">1</span><a
                         href="">下一页»</a></div>
             </div>
             <!--/页码列表-->
@@ -551,99 +422,60 @@ Nav Dropdown */
 
         <div style="clear:both"></div>
     </div>
-    <!--页面底部-->
+
+</div>
+
+<div class="zzsc-container">
+    <div class="container">
+        <section>
+            <div id="ampagination-bootstrap" style=""></div>
+        </section>
+    </div>
+</div>
 
 
-    <div class="footer-wrap">
-        <div class="inner clearfix">
-            <div class="b-logo b-item"><img src="../static/img/logo.png" alt=""/></div>
-            <div class="b-contact b-item">
-                <img src="../static/img/link.png"/>
-                <p class="address">地址：黑龙江哈尔滨市香坊区和兴路26号 </p>
-                <p class="post">邮编：150040</p>
-                <p class="tel">电话：82190136 <br></p>
-            </div>
-            <div class="b-access">
-                <img src="../static/img/access.png"/>
-                <ul class="link-wrap clearfix">
+<div style="clear:both"></div>
+</div>
+
+<!--页面底部-->
 
 
-                    <li><a target="_blank" href="https://www.nefu.edu.cn/" title="东北林业大学">东北林业大学</a></li>
+<div class="footer-wrap">
+    <div class="inner clearfix">
+        <div class="b-logo b-item"><img src="../static/img/logo.png" alt=""/></div>
+        <div class="b-contact b-item">
+            <img src="../static/img/link.png"/>
+            <p class="address">地址：黑龙江哈尔滨市香坊区和兴路26号 </p>
+            <p class="post">邮编：150040</p>
+            <p class="tel">电话：82190136 <br></p>
+        </div>
+        <div class="b-access">
+            <img src="../static/img/access.png"/>
+            <ul class="link-wrap clearfix">
 
 
-                    <li><a target="_blank" href="https://icec.nefu.edu.cn/" title="信息与计算机工程学院">信息与计算机工程学院</a></li>
+                <li><a target="_blank" href="https://www.nefu.edu.cn/" title="东北林业大学">东北林业大学</a></li>
 
 
-                    <li><a target="_blank" href="http://i.nefu.edu.cn" title="数字东林">数字东林</a></li>
+                <li><a target="_blank" href="https://icec.nefu.edu.cn/" title="信息与计算机工程学院">信息与计算机工程学院</a></li>
 
 
-                    <li><a target="_blank" href="https://tel.nefu.edu.cn/" title="电话">电话</a></li>
+                <li><a target="_blank" href="http://i.nefu.edu.cn" title="数字东林">数字东林</a></li>
 
 
-                </ul>
-            </div>
+                <li><a target="_blank" href="https://tel.nefu.edu.cn/" title="电话">电话</a></li>
+
+
+            </ul>
         </div>
     </div>
-    <div class="bottom-wrap">
-        <div class="inner">
-            <p>版权所有 ©Tao | copyright © 2008-2020 Tao. All Rights
-                Reserved.</p>
-        </div>
+</div>
+<div class="bottom-wrap">
+    <div class="inner">
+        <p>版权所有 ©Tao | copyright © 2008-2020 Tao. All Rights
+            Reserved.</p>
     </div>
-    <!--/页面底部-->
 </div>
 </body>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".banner").slide({
-            titCell: ".hd ul",
-            mainCell: ".bd ul",
-            effect: "fold",
-            autoPlay: false,
-            autoPage: true,
-            trigger: "click",
-            startFun: function (i) {
-                var curLi = $(".banner .bd li").eq(i);
-                if (!!curLi.attr("_src")) {
-                    curLi.css("background-image", curLi.attr("_src")).removeAttr("_src");
-                    curLi.css("");
-                }
-            }
-        });
-
-    });
-</script>
-
-<script>
-
-
-    var winWidth = 0;
-    var winHeight = 0;
-
-    function findDimensions() { //函数：获取尺寸
-        //获取窗口宽度
-        if (window.innerWidth) {
-            winWidth = window.innerWidth;
-        } else if ((document.body) && (document.body.clientWidth)) {
-            winWidth = document.body.clientWidth;
-        }
-
-        var realHeight = 440 * winWidth / 1920;
-
-        document.getElementById("bannerhead").style.height = realHeight + "px";
-        document.getElementById("bdhead").style.height = realHeight + "px";
-        document.getElementById("ulhead").style.height = realHeight + "px";
-        var luckElements = document.getElementsByName("imgli");
-
-        for (var i = 0; i < luckElements.length; i++) {
-
-            luckElements[i].style.height = realHeight + "px";
-        }
-    }
-
-    findDimensions();
-
-    window.onresize = findDimensions;
-</script>
 
 </html>

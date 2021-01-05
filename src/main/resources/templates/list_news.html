@@ -1,7 +1,7 @@
 <!--
   ~ Copyright (c) 2021.
   ~ module name： course-design
-  ~ fileName： 925-detail.html
+  ~ fileName： list_news.html
   ~ 2021-1-5 - create by Tao.
   ~
   -->
@@ -161,12 +161,20 @@
             color: #000000
         }
     </style>
-
+    <style>
+        .omit {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+    </style>
 
 </head>
 
 <body>
-<div class="index-wrapper" id="vue">
+<div class="index-wrapper">
     <!--页面头部-->
 
     <div th:replace="header_wrap::header-wrap"></div>
@@ -177,58 +185,62 @@
     <div class="banner_ny"></div>
     <div class="content_ny">
         <div class="left_lm">
-            <img src="../static/img/left8.jpg" width="240" height="254">
+            <img src="../static/img/left1.jpg" width="240" height="254">
             <ul>
 
-                <li><a href="">925移动开发实验室</a></li>
+                <li><a href="">学院新闻</a></li>
 
             </ul>
         </div>
-
         <div class="right_list">
             <div class="right_list_top">
                 <div class="le">
                     <div class="title-wrap clearfix">
-                        <div class="title fl"><h3>925移动开发实验室</h3></div>
+                        <div class="title fl"><h3>学院新闻</h3></div>
                     </div>
                 </div>
                 <div class="ri" style="margin-bottom:20px;">
-                    <a href="/index">首页</a> &gt;
-                    实验室
-                    &nbsp;&gt;&nbsp;<a href="">925移动开发实验室</a>
+
+
+                    <a href="/index.aspx">首页</a> &gt;
+                    <a href="/news.aspx">通知动态</a>
+                    &nbsp;&gt;&nbsp;<a href="/news_list.aspx?category_id=52&page=1">学院新闻</a>
                 </div>
             </div>
-            <div class="right_list_sp">
-                <div class="sp1">这里是925实验室</div>
-                <div class="sp2">
-                    <div class="info">
-                        <span><i class="iconfont icon-date">925移动开发实验室</i></span>
+
+            <ul th:each="news : ${newsVOList}">
+                <li>
+                    <div class="right_list_img">
+                        <a href="#">
+                            <img th:src="@{${news.pic}}" alt=""/>
+                            <span class="news-date clearfix">
+                                <i>17</i>
+                                <b>2020 <br> 十二月</b>
+                            </span>
+                        </a>
                     </div>
-                </div>
-                <div>
-                    <p style="text-align:left;text-indent:37px">
-                        <span style="font-size:19px;">925移动开发实验室</span></p>
-                    <p style="text-align:left;text-indent:37px">
-                        <span style="font-size:19px;">云计算（cloud computing）是分布式计算的一种，指的是通过网络“云”将巨大的数据计算处理程序分解成无数个小程序，然
+                    <div class="right_list_text">
+                        <p class="p1">
+                            <a th:href="'/news-detail?id='+${news.id}" th:title="${news.title}"
+                               th:utext="${news.title}"></a>
+                        </p>
+                        <p th:text="${news.content}" class="p2 omit">
+                        </p>
+                    </div>
+                </li>
+            </ul>
 
-后，通过多部服务器组成的系统进行处理和分析这些小程序得到结果并返回给用户。云计算早期，简单地说，就是简单的分布式计
-
-算，解决任务分发，并进行计算结果的合并。因而，云计算又称为网格计算。通过这项技术，可以在很短的时间内（几秒钟）完成对
-
-数以万计的数据的处理，从而达到强大的网络服务。
-
-
-现阶段所说的云服务已经不单单是一种分布式计算，而是分布式计算、效用计算、负载均衡、并行计算、网络存储、热备份冗杂
-
-和虚拟化等计算机技术混合演进并跃升的结果。
-
-</span></p>
-                </div>
-            </div>
-
+            <!--页码列表-->
+            <!--            <div class="page-box">-->
+            <!--                <div class="digg"><span>共414记录</span><span class="disabled">«上一页</span><span class="current">1</span><a-->
+            <!--                        href="/news_list.aspx?category_id=52&page=2">2</a><a-->
+            <!--                        href="/news_list.aspx?category_id=52&page=3">3</a><a-->
+            <!--                        href="/news_list.aspx?category_id=52&page=4">4</a><span>...</span><a-->
+            <!--                        href="/news_list.aspx?category_id=52&page=35">35</a><a-->
+            <!--                        href="/news_list.aspx?category_id=52&page=2">下一页»</a></div>-->
+            <!--            </div>-->
+            <!--/页码列表-->
         </div>
-
-        <div style="clear:both"></div>
     </div>
 
 </div>
@@ -285,84 +297,6 @@
     </div>
 </div>
 <!--/页面底部-->
-<script>
-    var vue = new Vue({
-        el: "#vue",
-        data() {
-            return {
-                teachers: [],
-                professor: true,
-                associate_professor: false,
-                lecturer: false,
-                map: {"professor": "教授", "associate_professor": "副教授", "lecturer": "讲师"}
-            }
-        },
-        mounted() {
-            axios
-                .get('/admin/api/list-teachers', {
-                    params: {
-                        professionalTitle: "教授",
-                    }
-                })
-                .then(response => {
-                    this.teachers = response.data.data;
-                })
-                .catch(error => {
-                    if (error.response) {
-                        toastr.error(error.response.data.message);
-                    } else {
-                        toastr.error("未知错误");
-                    }
-                })
-                .finally(() => this.loading = false)
-        },
-
-        methods: {
-            change: function (event) {
-                if (this.professor) {
-                    this.professor = false;
-                } else if (this.associate_professor) {
-                    this.associate_professor = false;
-                } else if (this.lecturer) {
-                    this.lecturer = false;
-                }
-
-                let job_name = event.currentTarget.getAttribute('value');
-                if ("professor" === job_name) {
-                    this.professor = true;
-                } else if ("associate_professor" === job_name) {
-                    this.associate_professor = true;
-                } else if ("lecturer" === job_name) {
-                    this.lecturer = true;
-                }
-
-                let professionalTitle = this.map[event.currentTarget.getAttribute('value')];
-                axios
-                    .get('/admin/api/list-teachers', {
-                        params: {
-                            professionalTitle: professionalTitle,
-                        }
-                    })
-                    .then(response => {
-                        this.teachers = response.data.data;
-                        console.log(this.teachers);
-                        console.log(response.data.data);
-
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            toastr.error(error.response.data.message);
-                        } else {
-                            toastr.error("未知错误");
-                        }
-                    })
-                    .finally(() => this.loading = false)
-            }
-        }
-
-    });
-
-</script>
 </body>
 
 </html>

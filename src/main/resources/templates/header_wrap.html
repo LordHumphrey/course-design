@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ module name： course-design
+  ~ fileName： header_wrap.html
+  ~ 2021-1-5 - create by Tao.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header-wrap" class="header-wrap">
+    <div class="top-wrap">
+        <div class="inner clearfix">
+            <div class="fl teacher-directory"><a href="#" target="_blank"></a>
+            </div>
+            <div class="fr right-nav">
+                <a href="/admin" id="">教师登录</a>
+            </div>
+        </div>
+    </div>
+    <div class="nav-wrap">
+        <div class="inner clearfix">
+            <div class="logo fl"></div>
+            <div class="nav-list fr" style="margin-top: 30px">
+                <ul id="navhead" data-mode="nav-follow">
+                    <li class="/home/index"><a href="index">首页</a></li>
+                    <li class="news">实验室
+                        <dl>
+                            <dd><a href="/home/923">923创新实验室</a></dd>
+                            <dd><a href="/home/925">925移动实验室</a></dd>
+                        </dl>
+                    </li>
+                    <li class="news">师资队伍
+                        <dl>
+                            <dd><a href="/home/teachers">教师队伍</a></dd>
+                            <dd><a href="/home/teacher-search">教师查询</a></dd>
+                        </dl>
+                    </li>
+                    <li class="news">学生事务
+                        <dl>
+                            <dd><a href="/home/employment">就业指南</a></dd>
+                            <dd><a href="/home/listNews">新闻</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

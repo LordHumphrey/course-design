@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： NewsDoConvertToDTO.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -29,5 +29,4 @@ public interface NewsDoConvertToDTO {
      * @return NewsDO
      */
     News news(NewsDTO newsDTO);
-
 }

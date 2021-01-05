@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： News.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -16,7 +16,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 /**
@@ -45,6 +44,9 @@ public class News {
     @TableField(value = "content")
     private String content;
 
+    @TableField(value = "pic")
+    private String pic;
+
     /**
      * 创建时间
      */
@@ -57,7 +59,8 @@ public class News {
      */
     @TableField(value = "gmt_modified", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date gmtModified;
+    private LocalDateTime gmtModified;
+
 
     @TableLogic
     @TableField(value = "isDeleted")

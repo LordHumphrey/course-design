@@ -2,7 +2,7 @@
   ~ Copyright (c) 2021.
   ~ module name： course-design
   ~ fileName： teacher_detail.html
-  ~ 2021-1-1 - create by Tao.
+  ~ 2021-1-5 - create by Tao.
   ~
   -->
 
@@ -197,59 +197,8 @@ Nav Dropdown */
 <body>
 <div class="index-wrapper" id="vue">
     <!--页面头部-->
+    <div th:replace="header_wrap::header-wrap"></div>
 
-    <div class="header-wrap">
-        <div class="top-wrap">
-            <div class="inner clearfix">
-                <div class="fl teacher-directory"><a href="" target="_blank">教师名录</a>
-                </div>
-                <div class="fr right-nav">
-                    <a href="/login.aspx" id="jiaoshi">教师登录</a>
-                </div>
-            </div>
-        </div>
-        <div class="nav-wrap">
-            <div class="inner clearfix">
-                <div class="logo fl"></div>
-                <div class="nav-list fr">
-                    <ul id="navhead" data-mode="nav-follow">
-                        <li class="index"><a href="index">首页</a></li>
-
-                        <li class="news">实验室
-
-                            <dl>
-                                <dd><a href="">923创新实验室</a></dd>
-                                <dd><a href="">925移动实验室</a></dd>
-                            </dl>
-
-                        </li>
-
-                        <li class="news">师资队伍
-
-                            <dl>
-
-                                <dd><a href="/teachers">教师队伍</a></dd>
-
-                                <dd><a href="/teacher-search">教师查询</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news" style=" cursor: pointer;">就业指南</li>
-                        <li class="news">学生事务
-                            <dl>
-
-                                <dd><a href="">新闻</a></dd>
-
-                                <dd><a href="">公告</a></dd>
-
-                            </dl>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--/页面头部-->
 
     <div class="banner_ny"></div>

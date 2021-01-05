@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： MybatisPlusAutoFillConfig.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -26,12 +26,13 @@ public class MybatisPlusAutoFillConfig implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "gmtCreated", LocalDateTime.class, LocalDateTime.now());
-        this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+        strictInsertFill(metaObject, "gmtCreated", LocalDateTime.class, LocalDateTime.now());
+        strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
+        strictInsertFill(metaObject, "gmtCreated", LocalDateTime.class, LocalDateTime.now());
+        strictUpdateFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
     }
 }

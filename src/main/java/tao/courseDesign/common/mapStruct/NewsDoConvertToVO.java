@@ -2,7 +2,7 @@
  * Copyright (c) 2021.
  * module name： course-design
  * fileName： NewsDoConvertToVO.java
- * 2021-1-1 - create by Tao.
+ * 2021-1-5 - create by Tao.
  *
  */
 
@@ -25,6 +25,6 @@ public interface NewsDoConvertToVO {
      * @param news DO
      * @return VO
      */
-    @Mapping(target = "gmtModified", source = "news.gmtModified", dateFormat = "MM-dd")
+    @Mapping(target = "gmtModified", dateFormat = "MM-dd")
     NewsVO newsToVO(News news);
 }

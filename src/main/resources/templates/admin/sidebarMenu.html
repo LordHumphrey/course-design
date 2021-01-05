@@ -1,0 +1,62 @@
+<!--
+  ~ Copyright (c) 2021.
+  ~ module name： course-design
+  ~ fileName： sidebarMenu.html
+  ~ 2021-1-5 - create by Tao.
+  ~
+  -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="sidebarMenu(activeSub,activeMain)" class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <li th:class="${activeMain}=='news'?'nav-item has-treeview menu-open':'nav-item has-treeview'">
+            <a href="#" th:class="${activeMain}=='news'?'nav-link active':'nav-link'">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    新闻管理
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/add-news" th:class="${activeSub}=='addnews'?'nav-link active':'nav-link'">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>添加新闻</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/list-news" th:class="${activeSub}=='listnews'?'nav-link active':'nav-link'">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>所有新闻</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li th:class="${activeMain}=='teachers'?'nav-item has-treeview menu-open':'nav-item has-treeview'">
+            <a href="#" th:class="${activeMain}=='teachers'?'nav-link active':'nav-link'">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    教师管理
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="" th:class="${activeSub}==''?'nav-link active':'nav-link'">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>添加教师</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/teachers" th:class="${activeSub}=='teachers'?'nav-link active':'nav-link'">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>所有教师</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+</html>

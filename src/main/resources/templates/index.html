@@ -2,7 +2,7 @@
   ~ Copyright (c) 2021.
   ~ module name： course-design
   ~ fileName： index.html
-  ~ 2021-1-1 - create by Tao.
+  ~ 2021-1-5 - create by Tao.
   ~
   -->
 
@@ -13,23 +13,28 @@
 <head>
     <meta charset="utf-8"/>
     <title>软件工程专业</title>
-
     <meta name="keywords" content="人工智能,大数据"/>
     <meta name="description" content="软件工程专业"/>
     <link rel="shortcut icon" type="image/x-icon" href="">
-
     <link rel="stylesheet" type="text/css" href="../static/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../static/css/slide_style.css"/>
     <script type="text/javascript" src="../static/js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="../static/js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="../static/js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="../static/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="../static/js/common.js"></script>
 
     <script type="text/javascript">
         $(function () {
             $(".focusbox").flexslider({
-                directionNav: false,
-                pauseOnAction: false
+                animation: 'slide',                 // 必备参数，自动滑动
+                animationLoop: true,           // 是否循环滑动，默认为 true
+                // itemWidth: 500,                  // 定义每个 item 宽度，单位为 px，默认为 100%
+                itemMargin: 0,                     // 定义每个 item margin，默认为 0
+                controlNav: false,                // 是否显示滑动控制小圆点，默认为 true
+                directionNav: false,               // 是否显示左右滑动控制控件，默认为 true
+                slideshowSpeed: 2000,        // 每次自动滑动间隔时间，默认为 7000，单位为 ms
+                animationSpeed: 500,           // 手动点击滑动时间，默认为 600，单位为 ms
+                smoothHeight: true,
             });
         });
     </script>
@@ -365,90 +370,15 @@ Nav Dropdown */
 <body>
 <div class="index-wrapper index">
     <!--页面头部-->
-
-
-    <div class="header-wrap">
-        <div class="top-wrap">
-            <div class="inner clearfix">
-                <div class="fl teacher-directory"><a href="#"
-                                                     target="_blank"></a>
-                </div>
-                <div class="fr right-nav">
-
-                    <a href=""></a>
-                    <a href="" id="">教师登录</a>
-
-                </div>
-            </div>
-        </div>
-        <div class="nav-wrap">
-            <div class="inner clearfix">
-                <div class="logo fl"></div>
-                <div class="nav-list fr">
-                    <ul id="navhead" data-mode="nav-follow">
-                        <li class="index"><a href="">首页</a></li>
-
-                        <li class="news">实验室
-
-                            <dl>
-
-                                <dd><a href="">923创新实验室</a></dd>
-
-                                <dd><a href="">925移动实验室</a></dd>
-
-                            </dl>
-
-                        </li>
-
-                        <li class="news">师资队伍
-
-                            <dl>
-
-                                <dd><a href="/teachers">教师队伍</a></dd>
-
-                                <dd><a href="/teacher-search">教师查询</a></dd>
-
-                            </dl>
-                        </li>
-                        <li class="news">就业指南
-
-                        </li>
-                        <li class="news">学生事务
-
-                            <dl>
-
-                                <dd><a href="">新闻</a></dd>
-
-                                <dd><a href="">公告</a></dd>
-
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <div th:replace="header_wrap::header-wrap"></div>
     <!--/页面头部-->
-    <div class="banner" id="bannerhead" style="margin-top: 140px; height: 440px;">
-        <div class="bd" id="bdhead" style="height: 440px;">
-            <ul id="ulhead" style="height: 440px;">
-
-
-                <li name="imgli" _src="url(../static/img/bg.jpg)"
-                    style=""><a
-                        target="_blank" href=""></a></li>
-
-
-                <li name="imgli" _src="url(../static/img/bg.jpg)"
-                    style=""><a
-                        target="_blank" href=""></a></li>
-
-
-                <li name="imgli" _src="url(../static/img/bg.jpg)"
-                    style=""><a
-                        target="_blank" href=""></a></li>
-
+    <div class="banner" id="bannerhead" style="margin-top: 166px">
+        <div class="bd" id="bdhead">
+            <ul id="ulhead">
+                <li><a target="_blank" href=""><img src="../static/img/banner-1.jpg" alt=""></a></li>
+                <li><a target="_blank" href=""><img src="../static/img/banner-2.jpg" alt=""></a></li>
+                <li><a target="_blank" href=""><img src="../static/img/banner-3.jpg" alt=""></a></li>
+                <li><a target="_blank" href=""><img src="../static/img/banner-5.jpg" alt=""></a></li>
             </ul>
         </div>
         <div class="hd">
@@ -466,7 +396,7 @@ Nav Dropdown */
                     <div class="title fl">
                         <h3>新闻动态</h3><span>News & Events</span>
                     </div>
-                    <a href="">更多 ></a>
+                    <a href="/home/listNews">更多 ></a>
                 </div>
                 <div class="wrapper clearfix">
                     <div class="main-left">
@@ -490,14 +420,15 @@ Nav Dropdown */
                     <div class="main-left" style="margin-left: 10px;width: 350px;">
                         <ul class="txt-list" th:each="news :${newsVOList}">
 
-<!--                            <li class="tit" >-->
+                            <!--                            <li class="tit" >-->
 
-<!--                                <a title="第五届中国大学生程序设计竞赛在我校举办"-->
-<!--                                   href="">第五届中国大学生程序设计竞赛在我校举办</a>-->
-<!--                            </li>-->
-                            <li >
+                            <!--                                <a title="第五届中国大学生程序设计竞赛在我校举办"-->
+                            <!--                                   href="">第五届中国大学生程序设计竞赛在我校举办</a>-->
+                            <!--                            </li>-->
+                            <li>
                                 <span th:text="${news.gmtModified}"></span>
-                                <a th:title="${news.title}" th:href="'/news-detail?id='+${news.id}" th:text="${news.title}"></a>
+                                <a th:title="${news.title}" th:href="'/home/news-detail?id='+${news.id}"
+                                   th:text="${news.title}"></a>
                             </li>
 
                         </ul>
@@ -510,7 +441,7 @@ Nav Dropdown */
                     <div class="title lec-title fl">
                         <h3>学术讲座</h3><span>Academic Talks</span>
                     </div>
-                    <a href="#">更多 ></a>
+                    <a href="http://news.nefu.edu.cn/xsdt.htm" target="_blank">更多 ></a>
                 </div>
 
                 <div>
@@ -518,8 +449,8 @@ Nav Dropdown */
 
                         <div class="talks-list fl">
 
-                            <a href="http://news.nefu.edu.cn/info/1017/16077.htm" class="list-txt fl"
-                               title="2020年12月20日学术报告3则（王兴伟 教授 东北大学；谢鲲 教授 湖南大学；郭得科 教授 国防科技大学）">
+                            <a href="http://news.nefu.edu.cn/info/1017/16077.htm" target="_blank" class="list-txt fl"
+                               title="">
                                 <h4 style="font-size:14px;font-weight:bold;">2020年12月20日“问道”林学主题论坛</h4>
                                 <p> 报告题目：“问道”林学主题论坛 报告时间：2020年12月20日（周日）上午9:20</p>
                             </a>
@@ -527,8 +458,8 @@ Nav Dropdown */
 
                         <div class="talks-list fl">
 
-                            <a href="http://news.nefu.edu.cn/info/1017/16451.htm" class="list-txt fl"
-                               title="2020年12月19日学术报告（辛斌 教授 北京理工大学）">
+                            <a href="http://news.nefu.edu.cn/info/1017/16451.htm" target="_blank" class="list-txt fl"
+                               title="2020年12月11日学术报告（徐艳春 博士生导师 东北林业大学）">
                                 <h4 style="font-size:14px;font-weight:bold;">2020年12月11日学术报告（徐艳春 博士生导师 东北林业大学）</h4>
                                 <p> 报告题目：精美的包装：科技论文写作中的规划和策略 报告地点：奥林学院101会议室</p>
                             </a>
@@ -536,8 +467,8 @@ Nav Dropdown */
 
                         <div class="talks-list fl">
 
-                            <a href="http://news.nefu.edu.cn/info/1017/16009.htm" class="list-txt fl"
-                               title="2020年12月16日学术报告（叶哲伟 教授 华中科技大学附属协和医院骨科医院）">
+                            <a href="http://news.nefu.edu.cn/info/1017/16009.htm" target="_blank" class="list-txt fl"
+                               title="我校在木材形成转录调控研究上取得新进展">
                                 <h4 style="font-size:14px;font-weight:bold;">我校在木材形成转录调控研究上取得新进展</h4>
                                 <p>
                                     近日，我校林木遗传育种国家重点实验室李伟研究组和姜立泉研究组合作，在国际知名植物学期刊Plant Physiology（生物学一区，TOP期刊）上，在线发表题为“MYB
@@ -563,14 +494,14 @@ Nav Dropdown */
                     <div class="title notice-title fl">
                         <h3>学院通知</h3><span>Notification</span>
                     </div>
-                    <a href="">更多 ></a>
+                    <a href="https://icec.nefu.edu.cn/index/tzgg.htm" target="_blank">更多 ></a>
                 </div>
                 <ul class="list-wrap">
 
 
                     <li>
                         <i></i>
-                        <a href="https://icec.nefu.edu.cn/info/1056/2412.htm"
+                        <a href="https://icec.nefu.edu.cn/info/1056/2412.htm" target="_blank"
                            title="信息与计算机工程学院2021年“硕博连读”博士研究生招生简章">信息与计算机工程学院2021年“硕博连读”博士研究生招生简章</a>
                         <span>2020-11-27</span>
                     </li>
@@ -578,7 +509,8 @@ Nav Dropdown */
 
                     <li>
                         <i></i>
-                        <a href="https://icec.nefu.edu.cn/info/1056/2411.htm" title="信息与计算机工程学院2021年博士研究生招生专业目录">信息与计算机工程学院2021年博士研究生招生专业目录</a>
+                        <a href="https://icec.nefu.edu.cn/info/1056/2411.htm" target="_blank"
+                           title="信息与计算机工程学院2021年博士研究生招生专业目录">信息与计算机工程学院2021年博士研究生招生专业目录</a>
                         <span>2020-11-27</span>
                     </li>
 
@@ -586,14 +518,15 @@ Nav Dropdown */
                     <li>
                         <i></i>
                         <a href="https://icec.nefu.edu.cn/info/1056/2385.htm"
-                           title="信息与计算机工程学院2021年接收推荐免试研究生（含本科直博...">信息与计算机工程学院2021年接收推荐免试研究生（含本科直博...</a>
+                           title="信息与计算机工程学院2021年接收推荐免试研究生（含本科直博..."
+                           target="_blank">信息与计算机工程学院2021年接收推荐免试研究生（含本科直博...</a>
                         <span>2020-11-18</span>
                     </li>
 
 
                     <li>
                         <i></i>
-                        <a href="https://icec.nefu.edu.cn/info/1056/2356.htm"
+                        <a href="https://icec.nefu.edu.cn/info/1056/2356.htm" target="_blank"
                            title="信息与计算机工程学院举办学术报告">信息与计算机工程学院举办学术报告</a>
                         <span>2020-11-05</span>
                     </li>
@@ -601,7 +534,7 @@ Nav Dropdown */
 
                     <li>
                         <i></i>
-                        <a href="https://icec.nefu.edu.cn/info/1056/2321.htm"
+                        <a href="https://icec.nefu.edu.cn/info/1056/2321.htm" target="_blank"
                            title="关于2020年秋季全国计算机等级考试报名的通知">关于2020年秋季全国计算机等级考试报名的通知</a>
                         <span>2020-11-03</span>
                     </li>
@@ -614,47 +547,47 @@ Nav Dropdown */
                     <div class="title lec-title fl">
                         <h3>公示公告</h3><span>Bulletin</span>
                     </div>
-                    <a class="fr" href="">更多 ></a>
+                    <a class="fr" href="https://www.nefu.edu.cn/index/tzgg.htm" target="_blank">更多 ></a>
                 </div>
                 <ul class="list-wrap">
 
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm" target="_blank"
                            title="东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示">东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示</a>
                         <span>2020-10-12</span>
                     </li>
 
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm" target="_blank"
                            title="关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知">关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知</a>
                         <span>2020-07-11</span>
                     </li>
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm" target="_blank"
                            title="东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示">东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示</a>
                         <span>2020-10-12</span>
                     </li>
 
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm" target="_blank"
                            title="关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知">关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知</a>
                         <span>2020-07-11</span>
                     </li>
 
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12785.htm" target="_blank"
                            title="东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示">东北林业大学2021年入职专职辅导员选聘综合考核通过人员公示</a>
                         <span>2020-10-12</span>
                     </li>
 
                     <li>
                         <i></i>
-                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm"
+                        <a href="https://www.nefu.edu.cn/info/1003/12767.htm" target="_blank"
                            title="关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知">关于查收2019-2020学年国家奖学金、本科生国家励志奖学金和2020-2021学年12月、1月国家助学金的通知</a>
                         <span>2020-07-11</span>
                     </li>
